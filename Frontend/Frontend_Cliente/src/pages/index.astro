@@ -470,6 +470,61 @@ const propiedadesDestacadas = obtenerPropiedadesDestacadas();
     font-size: var(--font-size-lg);
   }
 
+  /* Responsive Design - Mobile First */
+  
+  /* Ajustes para móviles pequeños */
+  @media (max-width: 480px) {
+    .hero {
+      min-height: 500px;
+      padding: var(--spacing-2xl) var(--spacing-md);
+    }
+
+    .hero-title {
+      font-size: var(--font-size-2xl);
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: var(--font-size-base);
+    }
+
+    .search-form {
+      padding: var(--spacing-md);
+      border-radius: 16px;
+    }
+
+    .stat {
+      min-width: 120px;
+      padding: var(--spacing-md);
+    }
+
+    .stat-number {
+      font-size: var(--font-size-2xl);
+    }
+
+    .zone-card {
+      padding: var(--spacing-md);
+    }
+
+    .zone-icon {
+      width: 56px;
+      height: 56px;
+    }
+
+    .properties-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .cta-text {
+      font-size: var(--font-size-base);
+    }
+  }
+
+  /* Tablets y pantallas medianas */
   @media (min-width: 640px) {
     .hero-title {
       font-size: var(--font-size-5xl);
@@ -485,6 +540,25 @@ const propiedadesDestacadas = obtenerPropiedadesDestacadas();
 
     .cta-actions {
       flex-direction: row;
+    }
+
+    .properties-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .hero {
+      min-height: 650px;
+    }
+
+    .hero-title {
+      font-size: var(--font-size-6xl);
+    }
+
+    .properties-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>

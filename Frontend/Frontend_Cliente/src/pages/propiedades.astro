@@ -311,6 +311,52 @@ const propiedadesPaginadas = propiedadesFiltradas.slice(inicio, fin);
     color: white;
   }
 
+  /* Responsive - Mobile */
+  @media (max-width: 767px) {
+    .page-header {
+      padding: var(--spacing-2xl) 0 var(--spacing-xl);
+    }
+
+    .page-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .page-description {
+      font-size: var(--font-size-sm);
+    }
+
+    .results-count {
+      font-size: var(--font-size-sm);
+    }
+
+    .sort-controls {
+      gap: var(--spacing-xs);
+    }
+
+    .sort-label {
+      display: none;
+    }
+
+    .sort-select {
+      font-size: var(--font-size-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .pagination {
+      gap: var(--spacing-xs);
+    }
+
+    .page-btn {
+      min-width: 36px;
+      height: 36px;
+      font-size: var(--font-size-sm);
+    }
+
+    .page-info {
+      font-size: var(--font-size-xs);
+    }
+  }
+
   @media (min-width: 768px) {
     .toolbar {
       flex-direction: row;

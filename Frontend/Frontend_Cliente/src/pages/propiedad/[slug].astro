@@ -601,17 +601,83 @@ const mensajeWhatsApp = `Hola, me interesa la propiedad: ${propiedad.titulo} (${
     text-transform: capitalize;
   }
 
+  /* Responsive - Mobile First */
+  @media (max-width: 767px) {
+    .property-detail {
+      padding: var(--spacing-lg) 0;
+    }
+
+    .property-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .property-price {
+      font-size: var(--font-size-3xl);
+    }
+
+    .property-gallery {
+      gap: var(--spacing-sm);
+    }
+
+    .gallery-main img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .gallery-thumbnails {
+      gap: var(--spacing-xs);
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+      padding: var(--spacing-md);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .sidebar {
+      padding: var(--spacing-md);
+    }
+
+    .contact-card {
+      padding: var(--spacing-md);
+    }
+
+    .contact-info {
+      font-size: var(--font-size-sm);
+    }
+
+    .contact-actions .btn {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: var(--font-size-sm);
+    }
+  }
+
   @media (min-width: 768px) {
     .property-header {
       flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
     }
+
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (min-width: 1024px) {
     .property-content {
       grid-template-columns: 1fr 350px;
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>

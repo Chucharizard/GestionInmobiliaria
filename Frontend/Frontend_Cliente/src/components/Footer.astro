@@ -222,6 +222,54 @@ const currentYear = new Date().getFullYear();
     color: rgba(255, 255, 255, 0.6);
   }
 
+  /* Responsive - Mobile First */
+  @media (max-width: 639px) {
+    .footer {
+      padding: var(--spacing-2xl) 0 var(--spacing-md);
+    }
+
+    .footer-content {
+      gap: var(--spacing-xl);
+    }
+
+    .footer-section {
+      text-align: center;
+    }
+
+    .footer-title {
+      font-size: var(--font-size-base);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-text {
+      font-size: var(--font-size-sm);
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+    }
+
+    .footer-links,
+    .footer-contacts {
+      font-size: var(--font-size-sm);
+    }
+
+    .footer-contacts li {
+      justify-content: center;
+      text-align: left;
+    }
+
+    .footer-bottom {
+      padding-top: var(--spacing-md);
+      font-size: var(--font-size-xs);
+    }
+  }
+
   @media (min-width: 640px) {
     .footer-content {
       grid-template-columns: repeat(2, 1fr);

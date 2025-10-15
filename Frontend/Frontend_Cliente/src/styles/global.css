@@ -237,6 +237,35 @@ img {
 }
 
 /* Responsive */
+/* Responsive - Mobile First */
+@media (max-width: 639px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  h1 {
+    font-size: var(--font-size-3xl);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .grid {
+    gap: var(--spacing-md);
+  }
+}
+
 @media (min-width: 640px) {
   h1 {
     font-size: var(--font-size-5xl);

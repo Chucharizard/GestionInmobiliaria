@@ -422,6 +422,43 @@ const propiedadesConCoordenadas = propiedades.filter(p => p.coordenadas && p.est
     background-color: var(--color-bg-secondary);
   }
 
+  /* Responsive - Mobile */
+  @media (max-width: 480px) {
+    .page-header {
+      padding: var(--spacing-xl) 0 var(--spacing-md);
+    }
+
+    .page-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .page-description {
+      font-size: var(--font-size-sm);
+    }
+
+    .map-sidebar {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .property-card-compact {
+      padding: var(--spacing-sm);
+    }
+
+    .property-card-compact h3 {
+      font-size: var(--font-size-sm);
+    }
+
+    .property-card-compact .price {
+      font-size: var(--font-size-base);
+    }
+
+    .map-toggle-sidebar {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: var(--font-size-sm);
+    }
+  }
+
   @media (max-width: 768px) {
     .map-sidebar {
       position: absolute;
@@ -431,6 +468,7 @@ const propiedadesConCoordenadas = propiedades.filter(p => p.coordenadas && p.est
       z-index: 100;
       transform: translateX(-100%);
       transition: transform var(--transition-base);
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
     }
 
     .map-sidebar.active {
@@ -445,4 +483,31 @@ const propiedadesConCoordenadas = propiedades.filter(p => p.coordenadas && p.est
       display: flex;
     }
   }
+
+  @media (min-width: 769px) {
+    .map-sidebar {
+      max-width: 400px;
+    }
+  }
 </style>
+
+<script>
+  // Toggle sidebar en móviles
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.querySelector('.map-toggle-sidebar');
+    const closeBtn = document.querySelector('.sidebar-close');
+    const sidebar = document.querySelector('.map-sidebar');
+
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.add('active');
+      });
+    }
+
+    if (closeBtn && sidebar) {
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+      });
+    }
+  });
+</script>
