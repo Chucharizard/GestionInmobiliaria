@@ -118,7 +118,7 @@ class LoginUseCase:
                 "empleado_id": usuario.get("empleado_id"),
                 "activo": usuario["activo"],
                 "fecha_creacion": usuario["fecha_creacion"],
-                "ultimo_acceso": datetime.utcnow()
+                "ultimo_acceso": datetime.utcnow().isoformat()
             },
             "tokens": {
                 **tokens,

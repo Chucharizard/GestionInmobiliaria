@@ -140,13 +140,13 @@ class UserResponse(BaseModel):
         ...,
         description="Estado del usuario"
     )
-    fecha_creacion: datetime = Field(
+    fecha_creacion: str = Field(
         ...,
-        description="Fecha de creación"
+        description="Fecha de creación (ISO format)"
     )
-    ultimo_acceso: Optional[datetime] = Field(
+    ultimo_acceso: Optional[str] = Field(
         None,
-        description="Fecha del último acceso"
+        description="Fecha del último acceso (ISO format)"
     )
     
     class Config:

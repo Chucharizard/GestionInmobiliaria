@@ -44,7 +44,7 @@ class UserRepository:
             # Mapear a los nombres de columnas de tu BD
             data = {
                 "correo_electronico_usuario": email,
-                "contrasenia_usuario": password_hash.encode('utf-8'),  # Convertir a bytes
+                "contrasenia_usuario": password_hash,  # Enviar como string, Supabase lo convertirá a BYTEA
                 "id_rol": self._map_rol_to_id(rol),
                 "nombre_usuario": email.split('@')[0],  # Usar parte del email como username
                 "es_activo_usuario": True,
@@ -62,10 +62,11 @@ class UserRepository:
             if not response.data:
                 raise Exception("Error al crear usuario")
             
-            # Obtener el usuario recién creado sin el campo de contraseña
+            # Obtener solo el ID del usuario recién creado
             user_id = response.data[0].get("id_usuario")
             
-            # Construir respuesta sin incluir el password_hash
+            # Construir respuesta manualmente sin consultar de nuevo la BD
+            # Esto evita problemas con bytes de la contraseña
             created_user = {
                 "id": str(user_id),
                 "email": email,
@@ -129,8 +130,6 @@ class UserRepository:
             
             # Convertir password desde el formato que viene de Supabase
             password = user_data.get("contrasenia_usuario")
-            print(f"DEBUG - Tipo de password: {type(password)}")
-            print(f"DEBUG - Password raw: {password[:100] if password else None}")
             
             if password:
                 # Si viene como string con formato \x (hex escape), decodificar desde hex
@@ -140,16 +139,13 @@ class UserRepository:
                         hex_string = password.replace('\\x', '')
                         password_bytes = bytes.fromhex(hex_string)
                         password = password_bytes.decode('utf-8')
-                        print(f"DEBUG - Password decodificado desde hex: {password}")
                     except Exception as e:
-                        print(f"DEBUG - Error decodificando desde hex: {e}")
+                        print(f"Error decodificando password desde hex: {e}")
                         password = None
                 elif isinstance(password, bytes):
                     password = password.decode('utf-8')
-                    print(f"DEBUG - Password decodificado (bytes): {password}")
                 elif isinstance(password, memoryview):
                     password = bytes(password).decode('utf-8')
-                    print(f"DEBUG - Password decodificado (memoryview): {password}")
             
             # Usar _map_from_db y agregar el password_hash manualmente
             mapped_data = self._map_from_db(user_data)
