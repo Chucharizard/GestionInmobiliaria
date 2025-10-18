@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from app.infrastructure.config.settings import settings
-from app.presentation.routers import auth
+from app.presentation.routers import auth, propiedad
 
 # Crear la aplicacion FastAPI
 app = FastAPI(
@@ -80,9 +80,9 @@ async def shutdown_event():
 
 # Incluir routers
 app.include_router(auth.router)
+app.include_router(propiedad.router)
 # Próximamente:
 # app.include_router(empleados.router, prefix="/api/v1", tags=["Empleados"])
-# app.include_router(propiedades.router, prefix="/api/v1", tags=["Propiedades"])
 
 
 if __name__ == "__main__":
